@@ -56,7 +56,7 @@ self.addEventListener('fetch', function(event) {
 					console.log('From cache', event.request.url);
 					return response;
 				}, function(err) {
-					console.log("Could not get response from network", err);
+					console.log("Could not get response from cache", err);
 					console.log('From network', event.request.url);
 					return fetch(event.request.url);
 				});
