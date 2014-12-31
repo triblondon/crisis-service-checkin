@@ -5,7 +5,7 @@ var shellResources = [
 	'',
 	'style/base.css',
 	'js/app.js',
-	'http://cdn.jsdelivr.net/pouchdb/3.2.0/pouchdb.min.js'
+	'https://cdn.jsdelivr.net/pouchdb/3.2.0/pouchdb.min.js'
 ];
 
 console.log("SW startup, version " + swVersion);
