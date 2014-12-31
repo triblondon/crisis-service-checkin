@@ -2,9 +2,9 @@ var swVersion = 5;
 var cacheNS = 'crisis-service-checkin';
 var currentCaches = [];
 var shellResources = [
-	'/',
-	'/style/base.css',
-	'/js/app.js',
+	'',
+	'style/base.css',
+	'js/app.js',
 	'http://cdn.jsdelivr.net/pouchdb/3.2.0/pouchdb.min.js'
 ];
 

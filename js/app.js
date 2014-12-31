@@ -9,8 +9,8 @@
 	var remoteCouch = 'https://offeressendeckedertionts:6wt4wx0VYvl5XQFpR6s83QWv@triblondon.cloudant.com/todos';
 
 	if ("serviceWorker" in navigator) {
-		navigator.serviceWorker.register('/serviceworker.js', {
-			scope: '/'
+		navigator.serviceWorker.register('serviceworker.js', {
+			scope: location.pathname
 		}).then(function(sw) {
 			console.log('ServiceWorker installed', sw);
 		}, function(err) {
