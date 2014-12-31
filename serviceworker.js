@@ -48,21 +48,20 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
 	if (event.request.method === 'GET') {
-	/*
-		// TODO: This doesn't work - cache hits never return their response to the browser
 		console.log('Checking cache for', event.request.url);
 		event.respondWith(
-			caches.match(event.request).then(function(response) {
-				console.log("Cache result", response);
-				if (response) {
-					console.log('From cache', event.request.url, response.text());
-					return response.text();
-				} else {
-					console.log('From network', event.request.url)
-				}
-			})
+			caches.match(event.request)
+				.then(function(response) {
+					console.log("Cache result", response);
+					console.log('From cache', event.request.url);
+					return response;
+				}, function(err) {
+					console.log("Could not get response from cache", err);
+					console.log('From network', event.request.url);
+					return fetch(event.request.url);
+				});
 		);
-	*/
+
 	} else {
 		console.log('Non-GET request', event.request.method, event.request.url);
 	}
