@@ -2,7 +2,7 @@ var swVersion = 5;
 var cacheNS = 'crisis-service-checkin';
 var currentCaches = [];
 var shellResources = [
-	'',
+	'./',
 	'style/base.css',
 	'js/app.js',
 	'https://cdn.jsdelivr.net/pouchdb/3.2.0/pouchdb.min.js'
@@ -48,21 +48,15 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
 	if (event.request.method === 'GET') {
-	/*
 		// TODO: This doesn't work - cache hits never return their response to the browser
 		console.log('Checking cache for', event.request.url);
 		event.respondWith(
-			caches.match(event.request).then(function(response) {
-				console.log("Cache result", response);
-				if (response) {
-					console.log('From cache', event.request.url, response.text());
-					return response.text();
-				} else {
-					console.log('From network', event.request.url)
-				}
-			})
+			caches.match(event.request)
+				.catch(function(err) {
+					console.log('Not in cache: ', e.request.url);
+					return fetch(e.request.url);
+				})
 		);
-	*/
 	} else {
 		console.log('Non-GET request', event.request.method, event.request.url);
 	}
